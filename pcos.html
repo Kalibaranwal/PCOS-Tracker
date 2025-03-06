@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS Tracker with Payment</title>
+    <link rel="stylesheet" href="pcos.css">
+    <style>
+        .qr-payment-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .qr-code {
+            display: block;
+            margin: 10px auto;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        /* Popup Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            overflow: auto;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><u>PCOS Tracker</u></h1>
+        <p>Track your symptoms and gain control</p>
+
+        <div class="what-we-provide">
+            <h2>What We Provide</h2>
+            <ul>
+                <li><strong>Personalized Diet Plan:</strong> Tailored diet recommendations to manage PCOS symptoms and improve overall health.</li>
+                <li><strong>Workout Plan:</strong> Customized exercise routines to help you stay fit and active.</li>
+                <li><strong>Measurement Guidelines:</strong> Measure ingredients, portion size, serving size.</li>
+                <li><strong>Daily Contact for Queries:</strong> Reach out to us anytime for support, advice, or questions related to PCOS management.</li>
+                <li><strong>Mental Health Support:</strong> Get access to journaling prompts, stress relief techniques, and mindfulness exercises.</li>
+            </ul>
+            <p style="background-color: green;">Sign up today and get personalized support to manage your PCOS effectively!</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#pcos-tracker">PCOS Tracker</a>
+        <a href="#sign-in">Sign In</a>
+        <a href="#payment">Payment</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div id="pcos-tracker" class="form-section">
+        <h2>PCOS Symptom Tracker</h2>
+        <form id="pcos-tracker-form">
+            <label for="irregular-periods">Do you experience irregular menstrual cycles?</label>
+            <select id="irregular-periods" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="excessive-hair-growth">Do you have excessive hair growth (hirsutism) on your face, chest, or back?</label>
+            <select id="excessive-hair-growth" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="thinning-hair">Have you noticed thinning hair or hair loss?</label>
+            <select id="thinning-hair" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="acne">Do you struggle with acne or oily skin?</label>
+            <select id="acne" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="weight-gain">Are you experiencing weight gain or difficulty losing weight?</label>
+            <select id="weight-gain" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="diagnosed-pcos">Have you been diagnosed with PCOS by a healthcare provider?</label>
+            <select id="diagnosed-pcos" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="pelvic-pain">Do you have pelvic pain or discomfort?</label>
+            <select id="pelvic-pain" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="fertility-issues">Do you have trouble getting pregnant or have a history of infertility?</label>
+            <select id="fertility-issues" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="mood-changes">Have you noticed changes in your mood, such as depression or anxiety?</label>
+            <select id="mood-changes" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="current-treatment">Are you currently under any treatment for PCOS?</label>
+            <select id="current-treatment" required>
+                <option value="">Select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <button type="submit">Submit Tracker</button>
+        </form>
+    </div>
+
+    <div id="sign-in" class="form-section">
+        <h2>Sign In</h2>
+        <form id="signin-form">
+            <label for="signin-name">Name:</label>
+            <input type="text" id="signin-name" required placeholder="Enter your full name">
+
+            <label for="signin-profession">Profession:</label>
+            <input type="text" id="signin-profession" required placeholder="Enter your profession">
+
+            <label for="signin-age">Age:</label>
+            <input type="number" id="signin-age" required min="18" placeholder="Enter your age">
+
+            <label for="signin-phone">Phone Number:</label>
+            <input type="tel" id="signin-phone" required pattern="[0-9]{10}" placeholder="Enter your phone number">
+
+            <label for="signin-location">Location:</label>
+            <input type="text" id="signin-location" required placeholder="Enter your location">
+
+            <label for="signin-email">Email:</label>
+            <input type="email" id="signin-email" required placeholder="Enter your email address">
+
+            <label for="signin-date">Date:</label>
+            <input type="date" id="signin-date" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div id="payment" class="form-section">
+        <h2>Make a Payment (₹100 only)</h2>
+        <p>To access premium features, scan the QR code below to make a payment:</p>
+        <div class="qr-payment-container">
+            <img src="pcospayment.jpeg" class="qr-code" alt="QR Code for Payment" width="200px" height="200px" 
+                 onerror="this.style.display='none'">
+            <p>Scan the QR Code to pay via PhonePay or Gpay</p>
+            <button id="payment-info-btn">Payment Information</button>
+        </div>
+        <div>
+            <img src="payment.jpeg" alt="Payment Confirmation" width="200px" height="200px">
+        </div>
+        <div>
+            <label for="payment-screenshot">Upload Payment Screenshot:</label>
+            <input type="file" id="payment-screenshot" accept="image/*" required>
+            <button id="payment-submit">Submit Payment</button>
+        </div>
+    </div>
+
+    <div id="contact" class="form-section">
+        <h2>Contact</h2>
+        <p>If you have any questions or need further assistance, feel free to reach out to us at:</p>
+        <p>Email: <a href="mailto:kalibarnwal@gmail.com">kalibarnwal@gmail.com</a></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 PCOS Tracker. All rights reserved.</p>
+    </footer>
+
+    <!-- Popup Modal -->
+    <div id="pcos-popup" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>PCOS Symptom Results</h2>
+            <p id="pcos-message"></p>
+        </div>
+    </div>
+
+    <script>
+        // Show the modal when the tracker is submitted
+        document.getElementById('pcos-tracker-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Count the number of "Yes" answers
+            var yesCount = 0;
+            var selects = document.querySelectorAll('select');
+            selects.forEach(function(select) {
+                if (select.value === 'yes') {
+                    yesCount++;
+                }
+            });
+
+            // Determine the popup message based on the count
+            var message = "";
+            if (yesCount > 3) {
+                message = "You are likely suffering from PCOS. Please consult a healthcare provider for further diagnosis.";
+            } else if (yesCount > 2) {
+                message = "You may be at risk of developing PCOS. It is advisable to seek a healthcare provider's opinion.";
+            } else {
+                message = "You are fine, and there are no immediate signs of PCOS. Keep maintaining a healthy lifestyle.";
+            }
+
+            // Display the popup with the appropriate message
+            document.getElementById('pcos-message').innerText = message;
+            var modal = document.getElementById('pcos-popup');
+            modal.style.display = 'block';
+        });
+
+        // Close the modal when the user clicks on the close button
+        document.querySelector('.close').addEventListener('click', function() {
+            var modal = document.getElementById('pcos-popup');
+            modal.style.display = 'none';
+        });
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('pcos-popup');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
